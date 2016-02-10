@@ -18,6 +18,13 @@ class LinkedList
     end
   end
 
+  def prepend(data)
+    new_node = Node.new(data)
+    new_node.next_node = @head
+    @head = new_node
+  end
+
+
   private
   # private cannot be called or tested outside the current method is referenced in
   # use these as helper methods to tidy up methods
@@ -35,7 +42,7 @@ class LinkedList
       #is your next node nil? Yes or no? loop through reset current position to next node
       current_position = current_position.next_node
     end
-    
+
     current_position
   end
 

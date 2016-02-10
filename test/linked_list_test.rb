@@ -75,6 +75,27 @@ class LinkedListTest < Minitest::Test
     assert_equal nil, list.head.next_node
   end
 
-  
+  def test_if_count_is_0_on_empty_list
+    list1 = LinkedList.new
+
+    assert_equal 0, list1.count
+  end
+
+  def test_if_can_count_nodes_in_list
+    list1 = LinkedList.new
+    list1.append("first")
+
+    assert_equal 1, list1.count
+  end
+
+  def test_if_can_count_nodes_in_list
+    list1 = LinkedList.new
+    list1.append("first")
+    list1.append("second")
+
+    assert_equal 2, list1.count
+  end
+
+
 
 end

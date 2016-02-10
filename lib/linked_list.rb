@@ -8,6 +8,10 @@ class LinkedList
     @head = nil
   end
 
+  def empty?
+    @head == nil
+  end
+
   def append(data)
     node = Node.new(data)
     if head_does_not_exist
@@ -43,6 +47,29 @@ class LinkedList
       previous_node.next_node = nil
     end
   end
+
+  def count
+    @count = 0
+    unless empty?
+      @count += 1
+      get_next_node(self.head)
+    end
+    @count
+  end
+
+  #after counting the head, count all next nodes
+  #check back about recursive if time
+
+  def get_next_node(node)
+    if node && node.next_node
+      temp_node = node.next_node
+      @count += 1
+      get_next_node(temp_node)
+    end
+  end
+
+
+
 
 
 private

@@ -30,9 +30,20 @@ class LinkedList
     @head = new_node
   end
 
-  # def pop
-  #
-  # end
+  def pop
+    current_node = @head
+
+    if current_node == nil
+      @head = nil
+    else
+
+      while current_node != nil
+        previous_node = current_node
+        current_node = current_node.next_node
+      end
+      previous_node.next_node = nil
+    end
+  end
 
 
 
@@ -48,17 +59,17 @@ private
     @head.nil?
   end
 
-  def no_next_node_exists(current_position)
-    current_position.next_node.nil?
+  def no_next_node_exists(current_node)
+    current_node.next_node.nil?
   end
 
-  def find_tail(current_position)
-    until no_next_node_exists(current_position)
+  def find_tail(current_node)
+    until no_next_node_exists(current_node)
       #is your next node nil? Yes or no? loop through reset current position to next node
-      current_position = current_position.next_node
+      current_node = current_node.next_node
     end
 
-    current_position
+    current_node
   end
 
 end

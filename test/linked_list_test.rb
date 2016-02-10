@@ -58,15 +58,15 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_if_tail
+    skip
     list = LinkedList.new
-    list.append("pizza")
-    list.append("calzone")
+    list.append("first")
+    list.append("second")
 
     assert_equal true, list.head.tail
   end
 
   def test_if_it_can_pop_one_node_from_one_node_list
-    skip
     list = LinkedList.new
     list.append("first")
     list.pop

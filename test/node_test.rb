@@ -33,4 +33,6 @@ class NodeTest < Minitest::Test
     assert_equal "pizza", node.data
     assert_equal "link", node.next_node
   end
+
+  def test
 end

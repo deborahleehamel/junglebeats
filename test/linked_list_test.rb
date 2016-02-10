@@ -1,7 +1,7 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/linked_list'
+require '../lib/linked_list'
 
 class LinkedListTest < Minitest::Test
 
@@ -48,6 +48,14 @@ class LinkedListTest < Minitest::Test
     assert_equal "third", list.head.next_node.next_node.data
   end
 
+  def test_it_can_prepend_new_data_in_first_position
+    list = LinkedList.new
+    list.append("first")
+    list.append("second")
+    list.prepend("new_first")
+
+    assert_equal "new_first", list.head.data
+  end
 
 
 

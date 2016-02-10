@@ -18,8 +18,8 @@ class LinkedList
     end
   end
 
-  def tail
-    if next_node == nil
+  def tail?
+    if @next_node == nil
       true
     end
   end
@@ -33,22 +33,16 @@ class LinkedList
   def pop
     current_node = @head
 
-    if current_node == nil
+    if current_node.tail?
       @head = nil
     else
-
-      while current_node != nil
+      while !current_node.tail?
         previous_node = current_node
         current_node = current_node.next_node
       end
       previous_node.next_node = nil
     end
   end
-
-
-
-
-
 
 
 private

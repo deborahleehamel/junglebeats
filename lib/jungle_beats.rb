@@ -16,7 +16,8 @@ class JungleBeats < LinkedList
     @beats
   end
 
-  
+
+
 
 
 

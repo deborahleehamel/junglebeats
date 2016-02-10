@@ -57,15 +57,31 @@ class LinkedListTest < Minitest::Test
     assert_equal "new_first", list.head.data
   end
 
-
-
-  def test_can_find_the_tail
-    skip
+  def test_if_tail
     list = LinkedList.new
     list.append("pizza")
     list.append("calzone")
 
-    assert_equal true, list.tail?
+    assert_equal true, list.head.tail
+  end
+
+  def test_if_it_can_pop_one_node_from_one_node_list
+    skip
+    list = LinkedList.new
+    list.append("first")
+    list.pop
+
+    assert_equal nil, list.head
+  end
+
+  def test_if_it_can_pop_one_node_from_two_node_list
+    skip
+    list = LinkedList.new
+    list.append("first")
+    list.append("second")
+    list.pop
+
+    assert_equal nil, list.head.next_node
   end
 
 end

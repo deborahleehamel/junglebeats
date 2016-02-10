@@ -34,5 +34,4 @@ class NodeTest < Minitest::Test
     assert_equal "link", node.next_node
   end
 
-  def test
 end

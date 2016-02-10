@@ -57,14 +57,6 @@ class LinkedListTest < Minitest::Test
     assert_equal "new_first", list.head.data
   end
 
-  def test_if_tail
-    skip
-    list = LinkedList.new
-    list.append("first")
-    list.append("second")
-
-    assert_equal true, list.head.tail
-  end
 
   def test_if_it_can_pop_one_node_from_one_node_list
     list = LinkedList.new
@@ -75,7 +67,6 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_if_it_can_pop_one_node_from_two_node_list
-    skip
     list = LinkedList.new
     list.append("first")
     list.append("second")
@@ -83,5 +74,7 @@ class LinkedListTest < Minitest::Test
 
     assert_equal nil, list.head.next_node
   end
+
+  
 
 end

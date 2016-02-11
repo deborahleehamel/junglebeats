@@ -22,8 +22,7 @@ class LinkedListTest < Minitest::Test
 
   def test_list_can_add_two_nodes
     list = LinkedList.new
-    list.append("first")
-    list.append("second")
+    list.append("first second")
 
     assert_equal Node, list.head.class
     assert_equal "first", list.head.data
@@ -34,9 +33,7 @@ class LinkedListTest < Minitest::Test
 
   def test_list_can_add_three_nodes
     list = LinkedList.new
-    list.append("first")
-    list.append("second")
-    list.append("third")
+    list.append("first second third")
 
     assert_equal Node, list.head.class
     assert_equal "first", list.head.data
@@ -50,11 +47,10 @@ class LinkedListTest < Minitest::Test
 
   def test_it_can_prepend_new_data_in_first_position
     list = LinkedList.new
-    list.append("first")
-    list.append("second")
-    list.prepend("new_first")
+    list.append("first second")
+    list.prepend("new_first new_second")
 
-    assert_equal "new_first", list.head.data
+    assert_equal "new_second", list.head.data
   end
 
 
@@ -68,8 +64,7 @@ class LinkedListTest < Minitest::Test
 
   def test_if_it_can_pop_one_node_from_two_node_list
     list = LinkedList.new
-    list.append("first")
-    list.append("second")
+    list.append("first second")
     list.pop
 
     assert_equal nil, list.head.next_node
@@ -90,17 +85,14 @@ class LinkedListTest < Minitest::Test
 
   def test_if_can_count_nodes_in_list
     list1 = LinkedList.new
-    list1.append("first")
-    list1.append("second")
+    list1.append("first second third")
 
-    assert_equal 2, list1.count
+    assert_equal 3, list1.count
   end
 
   def test_it_can_insert_in_position_two
     list = LinkedList.new
-    list.append("A")
-    list.append("B")
-    list.append("C")
+    list.append("A B C")
     list.insert(2, "D")
 
     assert_equal "D", list.head.next_node.next_node.data
@@ -108,9 +100,7 @@ class LinkedListTest < Minitest::Test
 
   def test_insert_returns_whole_list
     list = LinkedList.new
-    list.append("A")
-    list.append("B")
-    list.append("C")
+    list.append("A B C")
 
     assert_equal "A B D C", list.insert(2, "D")
   end
@@ -118,21 +108,31 @@ class LinkedListTest < Minitest::Test
 
   def test_all
     list = LinkedList.new
-    list.append("bip")
-    list.append("boo")
-    list.append("bop")
-    list.append("beg")
+    list.append("bip boo bop beg")
 
     assert_equal "bip boo bop beg", list.all
   end
 
   def test_if_can_find
    list = LinkedList.new
-   list.append("bev")
-   list.append("box")
-   list.append("bam")
+   list.append("bev box bam")
 
    assert_equal "box bam", list.find(1, 2)
   end
+
+  def test_if_specific_data_included_in_list
+    list = LinkedList.new
+    list.append("boo bop bep")
+
+    assert_equal true, list.include?("bop")
+  end
+
+  def test_if_specific_data_not_included_in_list
+    list  = LinkedList.new
+    list.append("boo bop bep")
+require "pry"; binding.pry
+    assert_equal false, list.include?("biz")
+  end
+
 
 end

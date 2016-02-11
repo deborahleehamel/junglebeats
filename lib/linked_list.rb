@@ -13,44 +13,51 @@ class LinkedList
   end
 
   def append(data)
-    node = Node.new(data)
-    if head_does_not_exist
-      @head = node
-    else
-      tail = find_tail(@head)
-      tail.next_node = node
+    nodes = data.split
+    nodes.each do |d|
+      node = Node.new(d)
+      if head_does_not_exist
+        @head = node
+      else
+        tail = find_tail(@head)
+        tail.next_node = node
+      end
     end
-  end
-
-  def tail?
-    if @next_node == nil
-      true
-    end
+    nodes.count
   end
 
   def prepend(data)
-    new_node = Node.new(data)
-    new_node.next_node = @head
-    @head = new_node
+    nodes = data.split
+    nodes.each do |d|
+      new_node = Node.new(d)
+      new_node.next_node = @head
+      @head = new_node
+    end
+    nodes.count
   end
 
-  def pop
-    current_node = @head
+  def pop(num = 1)
+    popped = []
+    until num == 0 do
+      current_node = @head
 
-    if current_node.tail?
-      @head = nil
-    else
-      while !current_node.tail?
-        previous_node = current_node
-        current_node = current_node.next_node
+      if current_node.tail?
+        popped << current_node
+        @head = nil
+      else
+
+        end
+        popped << previous_node.next_node
+        previous_node.next_node = nil
       end
-      previous_node.next_node = nil
+      num -= 1
     end
+    popped.map(&:data).reverse.join(" ")
   end
 
   def count
     @count = 0
-    unless empty?
+    unless @head.nil?
       @count += 1
       get_next_node(self.head)
     end
@@ -88,13 +95,13 @@ class LinkedList
   end
 
   def all
-  all = ""
-  current = @head
+    all = ""
+    current = @head
 
-  until current == nil
-    all << current.data + " "
-    current = current.next_node
-  end
+    until current == nil
+      all << current.data + " "
+      current = current.next_node
+    end
 
     all.strip
   end
@@ -107,8 +114,10 @@ class LinkedList
       collection << current.data.split
       current = current.next_node
     end
-    collection.flatten.slice(index, amount).join(" ")#.values_at(index..(index + amount)).strip
+    collection.flatten.slice(index, amount).join(" ")
   end
+
+
 
 
 

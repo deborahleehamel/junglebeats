@@ -68,7 +68,47 @@ class LinkedList
     end
   end
 
+  def insert(position, data)
+    if position > count
+      "List is not that long!"
+    elsif position == 0
+      prepend(data)
+    else
+      new_node = Node.new(data)
+      before = @head
+      (position - 1).times do
+        before = before.next_node
+      end
+      after = before.next_node
+      before.next_node = new_node
+      new_node.next_node = after
+    end
+    all
+    #this needs to return "all" data of the list
+  end
 
+  def all
+  all = ""
+  current = @head
+
+  until current == nil
+    all << current.data + " "
+    current = current.next_node
+  end
+
+    all.strip
+  end
+
+  def find(index, amount)
+    collection = []
+    current = @head
+
+    until current == nil
+      collection << current.data.split
+      current = current.next_node
+    end
+    collection.flatten.slice(index, amount).join(" ")#.values_at(index..(index + amount)).strip
+  end
 
 
 

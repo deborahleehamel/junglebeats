@@ -96,6 +96,43 @@ class LinkedListTest < Minitest::Test
     assert_equal 2, list1.count
   end
 
+  def test_it_can_insert_in_position_two
+    list = LinkedList.new
+    list.append("A")
+    list.append("B")
+    list.append("C")
+    list.insert(2, "D")
 
+    assert_equal "D", list.head.next_node.next_node.data
+  end
+
+  def test_insert_returns_whole_list
+    list = LinkedList.new
+    list.append("A")
+    list.append("B")
+    list.append("C")
+
+    assert_equal "A B D C", list.insert(2, "D")
+  end
+
+
+  def test_all
+    list = LinkedList.new
+    list.append("bip")
+    list.append("boo")
+    list.append("bop")
+    list.append("beg")
+
+    assert_equal "bip boo bop beg", list.all
+  end
+
+  def test_if_can_find
+   list = LinkedList.new
+   list.append("bev")
+   list.append("box")
+   list.append("bam")
+
+   assert_equal "box bam", list.find(1, 2)
+  end
 
 end

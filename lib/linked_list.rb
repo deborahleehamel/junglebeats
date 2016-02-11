@@ -1,9 +1,8 @@
 require_relative 'node'
 
 class LinkedList
-
   attr_accessor :head
-  #singly-linked list you have a head = the start of the list
+
   def initialize
     @head = nil
   end
@@ -26,7 +25,6 @@ class LinkedList
     nodes.count
   end
 
-
   def prepend(data)
     nodes = data.split
     nodes.each do |d|
@@ -36,8 +34,6 @@ class LinkedList
     end
     nodes.count
   end
-
-
 
   def pop(num = 1)
     popped =[]
@@ -58,8 +54,6 @@ class LinkedList
    end
    popped.reverse.join(" ")
   end
-
-
 
   def count
     @count = 0
@@ -131,9 +125,6 @@ class LinkedList
     end
     current.data == word
   end
-
-
-
 
 private
 

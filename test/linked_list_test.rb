@@ -5,7 +5,6 @@ require '../lib/linked_list'
 
 class LinkedListTest < Minitest::Test
 
-#test_can_find_the tail
   def test_initializes_with_head_equal_to_nil
     list = LinkedList.new
 
@@ -133,6 +132,5 @@ class LinkedListTest < Minitest::Test
 
     assert_equal false, list.include?("biz")
   end
-
 
 end

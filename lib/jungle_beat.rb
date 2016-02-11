@@ -16,9 +16,9 @@ class JungleBeat < LinkedList
   end
 
   def play
-      #iterate through each node and save the data to a string beats = ""
     `say -r 100 -v Boing "#{all}"`
     count
   end
 
 end
+require "pry"; binding.pry

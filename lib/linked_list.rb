@@ -102,7 +102,7 @@ class LinkedList
     all.strip
   end
 
-  def find(index, amount)
+  def find(position, amount)
     collection = []
     current = @head
 
@@ -110,7 +110,7 @@ class LinkedList
       collection << current.data.split
       current = current.next_node
     end
-    collection.flatten.slice(index, amount).join(" ")
+    collection.flatten.slice(position, amount).join(" ")
   end
 
   def include?(word)
@@ -138,10 +138,8 @@ private
 
   def find_tail(current_node)
     until no_next_node_exists(current_node)
-      #is your next node nil? Yes or no? loop through reset current position to next node
       current_node = current_node.next_node
     end
-
     current_node
   end
 end

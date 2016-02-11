@@ -11,6 +11,12 @@ class LinkedListTest < Minitest::Test
     assert_nil list.head
   end
 
+  def test_if_empty_list_head_is_nil
+    list = LinkedList.new()
+
+    assert list.empty?
+  end
+
   def test_list_can_add_a_head_node
     list = LinkedList.new
     list.append("first")
@@ -56,7 +62,7 @@ class LinkedListTest < Minitest::Test
   def test_if_it_can_pop_one_node_from_one_node_list
     list = LinkedList.new
     list.append("first")
-    list.pop
+    list.pop(1)
 
     assert_equal nil, list.head
   end
@@ -64,7 +70,15 @@ class LinkedListTest < Minitest::Test
   def test_if_it_can_pop_one_node_from_two_node_list
     list = LinkedList.new
     list.append("first second")
-    list.pop
+    list.pop(1)
+
+    assert_equal nil, list.head.next_node
+  end
+
+  def test_if_it_can_pop_more_nodes_than_exist
+    list = LinkedList.new
+    list.append("first second third fourth")
+    list.pop(3)
 
     assert_equal nil, list.head.next_node
   end
@@ -103,7 +117,6 @@ class LinkedListTest < Minitest::Test
 
     assert_equal "A B D C", list.insert(2, "D")
   end
-
 
   def test_all
     list = LinkedList.new

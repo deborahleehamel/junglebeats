@@ -26,6 +26,7 @@ class LinkedList
     nodes.count
   end
 
+
   def prepend(data)
     nodes = data.split
     nodes.each do |d|
@@ -36,24 +37,29 @@ class LinkedList
     nodes.count
   end
 
+
+
   def pop(num = 1)
-    popped = []
-    until num == 0 do
-      current_node = @head
-
-      if current_node.tail?
-        popped << current_node
-        @head = nil
-      else
-
-        end
-        popped << previous_node.next_node
-        previous_node.next_node = nil
-      end
-      num -= 1
+    popped =[]
+    if @head.next_node.nil?
+      popped << @head
+      @head = nil
+      return popped
     end
-    popped.map(&:data).reverse.join(" ")
+    num.times do
+
+    current_node = @head
+    while current_node.next_node.next_node != nil
+      current_node = current_node.next_node
+    end
+
+    popped << current_node.next_node.data
+    current_node.next_node = nil
+   end
+   popped.reverse.join(" ")
   end
+
+
 
   def count
     @count = 0
@@ -63,9 +69,6 @@ class LinkedList
     end
     @count
   end
-
-  #after counting the head, count all next nodes
-  #check back about recursive if time
 
   def get_next_node(node)
     if node && node.next_node
@@ -91,7 +94,6 @@ class LinkedList
       new_node.next_node = after
     end
     all
-    #this needs to return "all" data of the list
   end
 
   def all
@@ -117,13 +119,23 @@ class LinkedList
     collection.flatten.slice(index, amount).join(" ")
   end
 
+  def include?(word)
+    current = @head
+
+    until current.next_node == nil
+      if current.data == word
+        break
+      else
+        current = current.next_node
+      end
+    end
+    current.data == word
+  end
 
 
 
 
 private
-  # private cannot be called or tested outside the current method is referenced in
-  # use these as helper methods to tidy up methods
 
   def head_does_not_exist
     @head.nil?
@@ -141,5 +153,4 @@ private
 
     current_node
   end
-
 end

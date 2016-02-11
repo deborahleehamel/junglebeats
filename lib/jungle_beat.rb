@@ -21,9 +21,4 @@ class JungleBeat < LinkedList
     count
   end
 
-
-
-
-
-
 end

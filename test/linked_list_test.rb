@@ -130,7 +130,7 @@ class LinkedListTest < Minitest::Test
   def test_if_specific_data_not_included_in_list
     list  = LinkedList.new
     list.append("boo bop bep")
-require "pry"; binding.pry
+
     assert_equal false, list.include?("biz")
   end
 
